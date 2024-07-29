@@ -168,7 +168,7 @@ class PatchEmbed(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x_3 = self.lin(x)
         x_3 = x_3.sigmoid()
-        x_ = self.proj(x)
+        x_ = self.proj(x_3)
         # B C H W -> B H W C
         x_ = x_.permute(0, 2, 3, 1)
         return x_, x_3
